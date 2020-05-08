@@ -6,7 +6,7 @@ import { MyButton } from "./components/MyButton";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Grid2 />
+      <Grid2/>
     </View>
   );
 }
