@@ -5,7 +5,7 @@ type MyButtonProps = {
   buttonColor: string;
   textColor: string;
   content: string;
-  buttonWidth: string;
+  flex: number;
   onPress: () => void;
 };
 
@@ -14,17 +14,17 @@ export const MyButton: React.FC<MyButtonProps> = ({
   content,
   onPress,
   textColor,
-  buttonWidth,
+  flex,
 }) => {
   return (
     <TouchableOpacity
       style={{
+        flex: flex,
         backgroundColor: buttonColor,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 60,
+        borderRadius: 40,
         margin: 5,
-        width: buttonWidth,
       }}
       onPress={() => onPress()}
     >

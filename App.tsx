@@ -1,21 +1,23 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Grid2 } from "./components/Grid2";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { Grid } from "./components/Grid";
 import { MyButton } from "./components/MyButton";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Grid2/>
-    </View>
+
+    <SafeAreaView style={styles.container}>
+      <Grid/>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "black",
     alignItems: "center",
     justifyContent: "center",
+
   },
 });
