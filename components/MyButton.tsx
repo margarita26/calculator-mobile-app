@@ -16,6 +16,9 @@ export const MyButton: React.FC<MyButtonProps> = ({
   textColor,
   flex,
 }) => {
+
+    const buttonHeight = 80;
+
   return (
     <TouchableOpacity
       style={{
@@ -23,8 +26,12 @@ export const MyButton: React.FC<MyButtonProps> = ({
         backgroundColor: buttonColor,
         alignItems: "center",
         justifyContent: "center",
-        borderRadius: 40,
-        margin: 5,
+        borderRadius: 80/2,
+        marginLeft: 5,
+        marginRight: 5,
+        paddingBottom: 5,
+        marginTop: 5,
+        height: 80
       }}
       onPress={() => onPress()}
     >
