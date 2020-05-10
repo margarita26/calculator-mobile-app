@@ -9,6 +9,7 @@ export const Grid: React.FC = () => {
   const [secondNum, setSecondNum] = useState<number>(0)
   const [toShow, setToShow] = useState<string>('')
   const [isFirst, setIsFirst] = useState<boolean>(true);
+  const [isPercent, setPercent] = useState<boolean>(false);
 
   useEffect(() => {
     if (isFirst) {
@@ -24,6 +25,7 @@ export const Grid: React.FC = () => {
     setSecondNum(0);
     setSymbol('');
     setIsFirst(true);
+    setPercent(false);
   };
 
   const addToNumber = (num: number) => {
@@ -45,30 +47,43 @@ export const Grid: React.FC = () => {
     if (symbol != '') {
       doOperation();
     }
-    setIsFirst(false);
+    else {
+      setIsFirst(false);
+    }
     setSymbol(sym);
   }
 
   const doOperation = () => {
+    let temp = secondNum;
+
+    if (isPercent) {
+      if ((symbol == '+') || (symbol == '-')) {
+        temp = firstNum * (secondNum / 100)
+      }
+      else {
+        temp = (secondNum / 100)
+      }
+      setPercent(false);
+    }
+
     switch (symbol) {
       case '+': {
-        setFirstNum(firstNum + secondNum);
+        setFirstNum(firstNum + temp);
         break;
       }
       case '-': {
-        setFirstNum(firstNum - secondNum);
+        setFirstNum(firstNum - temp);
         break;
       }
       case '*': {
-        setFirstNum(firstNum * secondNum);
+        setFirstNum(firstNum * temp);
         break;
       }
       case '/': {
-        setFirstNum(firstNum / secondNum);
+        setFirstNum(firstNum / temp);
         break;
       }
     }
-
     setIsFirst(true);
     setSecondNum(0);
     setSymbol('');
@@ -79,7 +94,7 @@ export const Grid: React.FC = () => {
       setFirstNum(firstNum / 100);
     }
     else {
-      setSecondNum(secondNum / 100);
+      setPercent(true);
     }
   };
 
@@ -103,19 +118,20 @@ export const Grid: React.FC = () => {
     >
       <View
         style={{
-          flex: 2,
+          flex: 1,
           justifyContent: 'flex-end',
         }}
       >
-        <Text style={{ fontSize: 36, color: 'white', textAlign: 'right', marginRight: 10 }}>{toShow}</Text>
+        <Text style={{ fontSize: 64, color: 'white', textAlign: 'right', marginRight: 20 }}>{toShow}</Text>
       </View>
       <View
         style={{
-          flex: 3,
           flexDirection: "column",
+          padding:10,
+    
         }}
       >
-        <View style={{ flex: 1, flexDirection: "row", paddingBottom: 15, }}>
+        <View style={{ flexDirection: "row" }}>
           <MyButton
             buttonColor={"grey"}
             textColor={"black"}
@@ -146,7 +162,7 @@ export const Grid: React.FC = () => {
           />
         </View>
 
-        <View style={{ flex: 1, flexDirection: "row", paddingBottom: 15 }}>
+        <View style={{ flexDirection: "row" }}>
           <MyButton
             buttonColor={"#414141"}
             textColor={"white"}
@@ -177,7 +193,7 @@ export const Grid: React.FC = () => {
           />
         </View>
 
-        <View style={{ flex: 1, flexDirection: "row", paddingBottom: 15 }}>
+        <View style={{ flexDirection: "row" }}>
           <MyButton
             buttonColor={"#414141"}
             textColor={"white"}
@@ -208,7 +224,7 @@ export const Grid: React.FC = () => {
           />
         </View>
 
-        <View style={{ flex: 1, flexDirection: "row", paddingBottom: 15 }}>
+        <View style={{ flexDirection: "row" }}>
           <MyButton
             buttonColor={"#414141"}
             textColor={"white"}
@@ -239,7 +255,7 @@ export const Grid: React.FC = () => {
           />
         </View>
 
-        <View style={{ flex: 1, flexDirection: "row", paddingBottom: 15 }}>
+        <View style={{ flexDirection: "row" }}>
           <MyButton
             buttonColor={"#414141"}
             textColor={"white"}
