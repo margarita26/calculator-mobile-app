@@ -1,19 +1,23 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import { Grid } from "./components/Grid";
+import { MyButton } from "./components/MyButton";
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>HENLO WORLD</Text>
-    </View>
+
+    <SafeAreaView style={styles.container}>
+      <Grid/>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "black",
+    alignItems: "center",
+    justifyContent: "center",
+
   },
 });
